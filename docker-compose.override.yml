@@ -1,0 +1,80 @@
+#services:
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: payments-app
+#    depends_on:
+#      - mongodb
+#      - rabbitmq
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      SPRING_PROFILES_ACTIVE: default
+#      SPRING_DATA_MONGODB_HOST: mongodb
+#      SPRING_DATA_MONGODB_PORT: 27017
+#      SPRING_DATA_MONGODB_DATABASE: paymentsDb
+#      SPRING_DATA_MONGODB_USERNAME: root
+#      SPRING_DATA_MONGODB_PASSWORD: secret
+#      SPRING_RABBITMQ_HOST: rabbitmq
+#      SPRING_RABBITMQ_PORT: 5672
+#      SPRING_RABBITMQ_USERNAME: admin
+#      SPRING_RABBITMQ_PASSWORD: admin
+#    restart: unless-stopped
+#
+#  mongodb:
+#    image: mongo:latest
+#    container_name: payments-mongodb
+#    environment:
+#      MONGO_INITDB_DATABASE: paymentsDb
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: secret
+#    ports:
+#      - "27017:27017"
+#    volumes:
+#      - mongodb_data:/data/db
+#    restart: unless-stopped
+#
+#  mongo-express:
+#    image: mongo-express:latest
+#    container_name: payments-mongo-express
+#    depends_on:
+#      - mongodb
+#    ports:
+#      - "8081:8081"
+#    environment:
+#      ME_CONFIG_MONGODB_SERVER: mongodb
+#      ME_CONFIG_MONGODB_PORT: 27017
+#      ME_CONFIG_MONGODB_ENABLE_ADMIN: "false"
+#      ME_CONFIG_MONGODB_AUTH_DATABASE: admin
+#      ME_CONFIG_MONGODB_AUTH_USERNAME: root
+#      ME_CONFIG_MONGODB_AUTH_PASSWORD: secret
+#      ME_CONFIG_BASICAUTH_USERNAME: root
+#      ME_CONFIG_BASICAUTH_PASSWORD: secret
+#    restart: unless-stopped
+#
+#  rabbitmq:
+#    image: rabbitmq:latest
+#    container_name: payments-rabbitmq
+#    ports:
+#      - "5672:5672"
+#      - "15672:15672"
+#    environment:
+#      RABBITMQ_DEFAULT_USER: admin
+#      RABBITMQ_DEFAULT_PASS: admin
+#    configs:
+#      - source: rabbitmq-plugins
+#        target: /etc/rabbitmq/enabled_plugins
+#    volumes:
+#      - rabbitmq_lib:/var/lib/rabbitmq/
+#      - rabbitmq_log:/var/log/rabbitmq
+#    restart: unless-stopped
+#
+#configs:
+#  rabbitmq-plugins:
+#    content: "[rabbitmq_management]."
+#
+#volumes:
+#  mongodb_data:
+#  rabbitmq_lib:
+#  rabbitmq_log:

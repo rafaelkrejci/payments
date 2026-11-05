@@ -1,0 +1,79 @@
+server:
+  tomcat:
+    accept-count: 20000
+    max-connections: 20000
+
+#    max-threads: 10000
+#    threads:
+#        max: 4000
+#        min-spare: 2000
+
+spring:
+  application:
+    name: payments
+
+  mongodb:
+    authentication-database: admin
+    host: localhost
+    port: 27017
+    database: paymentsDb
+    username: root
+    password: secret
+    pool:
+      max-wait-time: 1000
+      max-size: 500
+      min-size: 100
+      max-idle-time: 1000
+      maintenance-interval: 1000
+
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+      bootstrap-servers: localhost:29092
+      group-id: payments-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: br.com.krejci.payments.infrastructure.adapter.kafka
+
+#      auto-commit-interval: 10000
+#      enable-auto-commit: true
+
+    producer:
+      acks: -1
+      bootstrap-servers: localhost:29092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+
+#
+#  task:
+#    execution:
+#      simple:
+#        concurrency-limit: -1
+#    scheduling:
+#     execution:
+#      mode: type
+#
+
+
+management:
+  tracing:
+    sampling:
+      probability: '1.0'
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
+    metrics:
+      export:
+        url: http://localhost:4318/v1/metrics
+        enabled: true
+
+
+  endpoints:
+    web:
+      exposure:
+        include=: health,info,metrics,loggers,httptrace,threaddump,env,beans,configprops,auditevents,mappings

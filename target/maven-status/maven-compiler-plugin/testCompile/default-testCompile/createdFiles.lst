@@ -1,0 +1,7 @@
+br/com/krejci/payments/infrastructure/adapter/in/rest/GlobalExceptionHandlerTest.class
+br/com/krejci/payments/domain/PaymentValueObjectsTest.class
+br/com/krejci/payments/application/service/PaymentManagementServiceTest.class
+br/com/krejci/payments/infrastructure/adapter/out/persistence/MongoPaymentRepositoryAdapterTest.class
+br/com/krejci/payments/infrastructure/adapter/in/rest/PaymentControllerTest.class
+br/com/krejci/payments/infrastructure/adapter/kafka/KafkaPaymentAdaptersTest.class
+br/com/krejci/payments/infrastructure/adapter/PaymentAdapterMappingTest.class

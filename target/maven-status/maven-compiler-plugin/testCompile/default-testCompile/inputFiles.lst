@@ -1,0 +1,7 @@
+/workspaces/payments/src/test/java/br/com/krejci/payments/application/service/PaymentManagementServiceTest.java
+/workspaces/payments/src/test/java/br/com/krejci/payments/domain/PaymentValueObjectsTest.java
+/workspaces/payments/src/test/java/br/com/krejci/payments/infrastructure/adapter/PaymentAdapterMappingTest.java
+/workspaces/payments/src/test/java/br/com/krejci/payments/infrastructure/adapter/in/rest/GlobalExceptionHandlerTest.java
+/workspaces/payments/src/test/java/br/com/krejci/payments/infrastructure/adapter/in/rest/PaymentControllerTest.java
+/workspaces/payments/src/test/java/br/com/krejci/payments/infrastructure/adapter/kafka/KafkaPaymentAdaptersTest.java
+/workspaces/payments/src/test/java/br/com/krejci/payments/infrastructure/adapter/out/persistence/MongoPaymentRepositoryAdapterTest.java

@@ -1,0 +1,11 @@
+{
+  "pan" : 1727282828,
+  "cvv" : 123,
+  "expirationDate" : "2026-10-09" ,
+  "cardHolderName" : "Rafael",
+  "cardHolderLastName" : "Krejci", 
+  "cardHolderEmail" : "rafael.krejci@gmail.com" , 
+  "cardHolderPhone" : "+5521965850913",
+  "sku" : "AJ83912JD" 
+
+}
